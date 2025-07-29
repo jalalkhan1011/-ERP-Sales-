@@ -25,7 +25,7 @@
 
 2.  Installation Steps
     # 1. Clone the repository
-        - git clone https://github.com/your-repo/erp-sales-module.gi
+        - git clone https://github.com/jalalkhan1011/-ERP-Sales-.git
     # 2. Enter project folder
         - cd erp-sales-module
     # 3. Install dependencies
@@ -115,7 +115,7 @@
 9.  Ready to Run!
     - php artisan serve
     - Then open → http://127.0.0.1:8000
-    
+
 10. login credential 
     - User-> admin@example.com 
     - Password -> 123456789
