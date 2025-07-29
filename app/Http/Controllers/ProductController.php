@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -12,7 +13,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::latest()->paginate(10);
+        return view('product.index', compact('products'));
     }
 
     /**
@@ -20,7 +22,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('product.create');
     }
 
     /**
@@ -28,7 +30,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            Product::create($request->only(['name', 'price']));
+            DB::commit();
+            return redirect(route('products.index'))->with('success', 'Product created successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect(route('products.index'))->with('error', 'Something went wrong');
+        }
     }
 
     /**
@@ -44,7 +59,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('product.edit', compact('product'));
     }
 
     /**
@@ -52,7 +67,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        DB::beginTransaction();
+        try {
+            $product->update($request->only(['name', 'price']));
+            DB::commit();
+            return redirect(route('products.index'))->with('success', 'Product updated successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect(route('products.index'))->with('error', 'Something went wrong');
+        }
     }
 
     /**
@@ -60,6 +88,14 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $product->delete();
+            DB::commit();
+            return back()->with('error', 'Product deleted');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect(route('products.index'))->with('error', 'Something went wrong');
+        }
     }
 }

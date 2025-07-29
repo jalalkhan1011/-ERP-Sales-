@@ -28,8 +28,8 @@
             </div>
         @endif
 
-        <table class="table table-bordered">
-            <thead>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
@@ -39,7 +39,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($customers as $customer)
+                @forelse ($customers as $customer)
                     <tr>
                         <td>{{ $customer->id }}</td>
                         <td>{{ $customer->name }}</td>
@@ -55,9 +55,13 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        {{ $customers->links() }}
-    </div>
-@endsection
+                    @empty
+                        <tr>
+                            <td colspan="5" class="text-center">No Customer Found</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+            {{ $customers->links() }}
+        </div>
+    @endsection
