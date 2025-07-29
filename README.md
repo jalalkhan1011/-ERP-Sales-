@@ -99,13 +99,13 @@
     - Alerts (Success/Error) on actions
 
 7.  How to Use
-    1️⃣ Create some Customers & Products.
-    2️⃣ Go to Sales → New Sale to create a sale.
-    3️⃣ Add multiple products dynamically, set qty, price, discount → total auto update.
-    4️⃣ Save sale → success message shown.
-    5️⃣ Edit sale → modify items & note.
-    6️⃣ Delete sale → moves to Trash.
-    7️⃣ Restore sale from Trash if needed.
+     - Create some Customers & Products.
+     - Go to Sales → New Sale to create a sale.
+     - Add multiple products dynamically, set qty, price, discount → total auto update.
+     - Save sale → success message shown.
+     - Edit sale → modify items & note.
+     - Delete sale → moves to Trash.
+     - Restore sale from Trash if needed.
 8.  Bonus Features
 
     - Eloquent Relationships optimized (with with() to avoid N+1)
@@ -115,7 +115,10 @@
 9.  Ready to Run!
     - php artisan serve
     - Then open → http://127.0.0.1:8000
-10. login credential - User-> admin@example.com - Password -> 123456789
+    
+10. login credential 
+    - User-> admin@example.com 
+    - Password -> 123456789
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
