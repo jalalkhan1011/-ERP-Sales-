@@ -93,6 +93,7 @@
                             <li class="nav-item"><a class="nav-link" href="{{ route('sales.index') }}">Sales</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('sales.create') }}">+ New Sale</a>
                             </li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('sales.trash') }}">SaleTrash</a></li>
                         </ul>
                     </div>
                 </div>
@@ -103,6 +104,7 @@
             @yield('content')
         </main>
     </div>
+    @stack('js')
 </body>
 
 </html>

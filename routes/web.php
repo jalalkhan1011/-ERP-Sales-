@@ -22,6 +22,8 @@ Route::middleware('auth')->group(function () {
         Route::resource('/products', ProductController::class);
     });
     Route::group(['prefix' => 'sale'], function () {
+        Route::get('/trash', [SaleController::class, 'trash'])->name('sales.trash');
+        Route::get('/restore/{id}', [SaleController::class, 'restore'])->name('sales.restore');
         Route::resource('/sales', SaleController::class);
     });
 });
